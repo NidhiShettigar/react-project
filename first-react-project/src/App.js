@@ -11,17 +11,24 @@ import {
 function App() {
   return (
     <div>
-      <Header/>
       <Router>
-        <ul>
-          <li>
-            <Link to="/" className="text-blue-500">Home</Link>
-          </li>
-        </ul>
+        <Header/>
+        <Switch>
+          <Route exact path="/">
+            <h1 className="font-bold text-2xl">This is home page</h1>
+          </Route>
+
+          <Route path="/about">
+            <h1 className="font-bold text-2xl">This is about page</h1>
+          </Route>
+        </Switch>
+        <Footer/>
       </Router>
-      <Footer/>
+      
     </div>
   );
 }
 
 export default App;
+
+//stopped at 2:49
