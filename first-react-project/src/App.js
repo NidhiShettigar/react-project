@@ -8,6 +8,7 @@ import Header from './Components/Header';
 import Footer from './Components/Footer';
 import Home from './Views/Home';
 import About from './Views/About';
+import Contact from './Views/Contact';
 
 function App() {
   return (
@@ -19,9 +20,13 @@ function App() {
             <Route exact path="/">
               <Home/>
             </Route>
-              <About/>
-            <Route path="/about">
               
+            <Route path="/about">
+              <About/>
+            </Route>
+            
+            <Route exact strict path="/contact">
+              <Contact/>
             </Route>
           </Switch>
         </div>

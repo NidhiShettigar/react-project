@@ -37,3 +37,14 @@ function Navigate() {
             {menu}
 
         </nav>
+
+
+Route can also be written as -
+
+<Route path="/" render={
+    () => {
+        return ( 
+            <h1> Welcome </h1>
+        );
+    }
+}
