@@ -28,6 +28,8 @@ function App() {
             <Route exact strict path="/contact">
               <Contact/>
             </Route>
+
+            
           </Switch>
         </div>
         <Footer/>
