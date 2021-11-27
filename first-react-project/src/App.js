@@ -9,6 +9,7 @@ import Footer from './Components/Footer';
 import Home from './Views/Home';
 import About from './Views/About';
 import Contact from './Views/Contact';
+import Product from './Views/Product';
 
 function App() {
   return (
@@ -29,7 +30,10 @@ function App() {
               <Contact/>
             </Route>
 
-            
+            <Route exact strict path="/product/:id">
+              <Product/>
+            </Route>
+
           </Switch>
         </div>
         <Footer/>
