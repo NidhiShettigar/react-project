@@ -6,13 +6,26 @@ function Product() {
     //const {id} = useParams() --for dynamic url
     //const url = `https://reqres.in/api/users/${id}` --for dynamic url
     const url = 'https://reqres.in/api/users/2'
-    const [product, setProduct] = useState(null)
+    //const [product, setProduct] = useState(null)  --before adding loader
+    const [product, setProduct] = useState({
+        loading: false,
+        data: null
+    })
+
     let content = null
  
     useEffect(() => {
+        setProduct({
+            loading: true,
+            data: null,
+        })
         axios.get(url)
             .then(response => {
-                setProduct(response.data)
+                //setProduct(response.data) --before adding loader
+                setProduct({
+                    loading: false,
+                    data: response.data
+                })
             })
     }, [url])
 /*
@@ -24,25 +37,30 @@ function Product() {
             </div>
         )
     }
-*/    
-    if(product){
+*/  
+
+    if(product.loading){
+        content = <p>...loading</p>
+    }
+
+    if(product.data){
             content =
                 <div>
                     <h1 className="text-2xl font-bold mb-3"
                     >
-                        {product.data.first_name}
+                        {product.data.data.first_name}
                     </h1>
                     <div>
                         <img
-                            src={product.data.avatar}
-                            alt={product.data.last_name}
+                            src={product.data.data.avatar}
+                            alt={product.data.data.last_name}
                         />
                     </div>
                     <div className="font-bold text-xl mb-3">
-                        ID - {product.data.id}
+                        ID - {product.data.data.id}
                     </div>
                     <div>
-                        {product.support.text}
+                        {product.data.support.text}
                     </div>
                 </div>
     }
