@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
+import Loader from '../Components/Loader'
 //import { useParams } from 'react-router'   --for dynamic url
 
 function Product() {
@@ -9,7 +10,8 @@ function Product() {
     //const [product, setProduct] = useState(null)  --before adding loader
     const [product, setProduct] = useState({
         loading: false,
-        data: null
+        data: null,
+        error: false
     })
 
     let content = null
@@ -18,13 +20,22 @@ function Product() {
         setProduct({
             loading: true,
             data: null,
+            error: false
         })
         axios.get(url)
             .then(response => {
                 //setProduct(response.data) --before adding loader
                 setProduct({
                     loading: false,
-                    data: response.data
+                    data: response.data,
+                    error: false
+                })
+            })
+            .catch(() => {
+                setProduct({
+                    loading: false,
+                    data: null,
+                    error: true
                 })
             })
     }, [url])
@@ -39,8 +50,14 @@ function Product() {
     }
 */  
 
+    if(product.error){
+        content = <p>
+            There was an error please refresh or try again later.
+        </p>
+    }   
+
     if(product.loading){
-        content = <p>...loading</p>
+        content = <Loader/>
     }
 
     if(product.data){
