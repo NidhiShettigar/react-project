@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import Loader from '../Components/Loader'
+import ProductCard from '../Components/ProductCard'
 
 function Home() {
     const url = 'https://reqres.in/api/users?page=2'
@@ -48,10 +49,15 @@ function Home() {
 
     
     if(products.data){
-        content = products.data.data.map((items,key) =>
+        content = products.data.data.map((item,key) =>
             <div>
-                {items.email}
+                <ProductCard
+                    item = {item}
+                />
             </div>
+            /*<div>
+                {items.email}  -- for without ProductCard.js file
+            </div>*/
         )
     }
 //8:10
