@@ -60,7 +60,7 @@ function Home() {
             </div>*/
         )
     }
-//8:10
+
     return(
         <div>
             <h1 className="font-bold text-2xl mb-3">
