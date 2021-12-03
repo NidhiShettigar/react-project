@@ -35,17 +35,7 @@ function NavigationMenu(props) {
                         Contact
                     </Link>
                 </li>
-                <li>
-                    <Link 
-                        to="/product/:id" 
-                        className="text-blue-500 py-3 border-t border-b block"
-                        onClick={props.closeMenu}
-                    >
-                        Product
-                    </Link>
-                </li>
             </ul>
-
         </div>
     )
 }

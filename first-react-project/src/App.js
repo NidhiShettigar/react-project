@@ -13,7 +13,7 @@ import Product from './Views/Product';
 
 function App() {
   return (
-    <div>
+    <div className="relative pb-10 min-h-screen">
       <Router>
         <Header/>
         <div className="p-3">
@@ -30,7 +30,7 @@ function App() {
               <Contact/>
             </Route>
 
-            <Route exact strict path="/product/:id">
+            <Route exact strict path="/products/:id">
               <Product/>
             </Route>
 

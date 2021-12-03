@@ -4,7 +4,8 @@ import Loader from '../Components/Loader'
 import ProductCard from '../Components/ProductCard'
 
 function Home() {
-    const url = 'https://reqres.in/api/users?page=2'
+    const url = `https://5e9623dc5b19f10016b5e31f.mockapi.io/api/v1/products?page=1&limit=10`
+    //const url = 'https://reqres.in/api/users?page=2'
     const [products, setProducts] = useState({
         loading: false,
         data: null,
@@ -46,8 +47,16 @@ function Home() {
     if(products.loading){
         content = <Loader/>
     }
-
-    
+    if(products.data){
+        content = products.data.map((product) =>
+            <div key = { product.id}>
+                <ProductCard
+                    product = {product}
+                />
+            </div> 
+        )
+    }
+    /*
     if(products.data){
         content = products.data.data.map((item,key) =>
             <div>
@@ -57,14 +66,14 @@ function Home() {
             </div>
             /*<div>
                 {items.email}  -- for without ProductCard.js file
-            </div>*/
+            </div>//
         )
     }
-
+*/
     return(
         <div>
             <h1 className="font-bold text-2xl mb-3">
-                Best Software Engineers
+                Best Sellers
             </h1>
             {content}
         </div>
