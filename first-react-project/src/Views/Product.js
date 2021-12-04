@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react'
-import axios from 'axios'
+import React from 'react'
 import Loader from '../Components/Loader'
 import { useParams } from 'react-router'   //--for dynamic url
+import { useAxiosGet } from '../Hooks/HttpRequests'
 
 function Product() {
     const {id} = useParams() //--for dynamic url
@@ -9,14 +9,17 @@ function Product() {
     //const url = `https://reqres.in/api/users/${id}` --for dynamic url
     //const url = 'https://reqres.in/api/users/2'
     //const [product, setProduct] = useState(null)  //--before adding loader
+    /* replaced with hooks
     const [product, setProduct] = useState({
         loading: false,
         data: null,
         error: false
-    })
+    })*/
 
+    let product = useAxiosGet(url)
     let content = null
 
+    /*replaced with hooks
     useEffect(() => {
         setProduct({
             loading: true,
@@ -40,6 +43,7 @@ function Product() {
                 })
             })
     }, [url])
+    */
 /*
     if(product){
         return(

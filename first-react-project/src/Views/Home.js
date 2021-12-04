@@ -1,11 +1,15 @@
-import React, { useState, useEffect } from 'react'
-import axios from 'axios'
+import React from 'react'
 import Loader from '../Components/Loader'
 import ProductCard from '../Components/ProductCard'
+import { useAxiosGet } from '../Hooks/HttpRequests'
 
 function Home() {
     const url = `https://5e9623dc5b19f10016b5e31f.mockapi.io/api/v1/products?page=1&limit=10`
     //const url = 'https://reqres.in/api/users?page=2'
+    
+    let products = useAxiosGet(url)
+
+    /* Replaced with hooks in HttpRequests.js file
     const [products, setProducts] = useState({
         loading: false,
         data: null,
@@ -35,6 +39,7 @@ function Home() {
                 })
             })
     }, [url])
+    */
 
     let content = null
 
